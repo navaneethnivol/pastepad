@@ -1,0 +1,23 @@
+header #logo .text {
+  font-size: 2.5rem;
+  font-weight: unset;
+  line-height: 2rem;
+  margin-block-end: unset;
+  margin-block-start: unset;
+  margin-top: -0.23em;
+  position: relative;
+  transition: color .25s;
+}
+
+header #logo .text .top {
+  color: var(--sub-color);
+  font-size: .225em;
+  left: 0.35em;
+  line-height: .225em;
+  position: absolute;
+  transition: color .125s, opacity .125s;
+}
+
+.button :hover {
+  color: var(--sub-color);
+}
