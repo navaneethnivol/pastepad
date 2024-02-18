@@ -11,9 +11,9 @@ header #logo .text {
 
 header #logo .text .top {
   color: var(--sub-color);
-  font-size: .225em;
+  font-size: .240em;
   left: 0.35em;
-  line-height: .225em;
+  line-height: .240em;
   position: absolute;
   transition: color .125s, opacity .125s;
 }

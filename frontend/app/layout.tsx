@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import "./globals.css";
 
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -23,9 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lexend_deca.className} sm:container sm:mx-auto pt-8`}>
+      <body className={`${lexend_deca.className}  w-4/6 sm:w-5/6 items-center content-center sm:mx-auto pt-8`}>
         <Navigation></Navigation>
         {children}
+        <SpeedInsights />
         <Footer></Footer>
       </body>
     </html>

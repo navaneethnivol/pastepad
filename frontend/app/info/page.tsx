@@ -11,7 +11,7 @@ export default function Info() {
     return (
         <div>
 
-            <div className=" flex flex-col w-full text-lg justify-center created">
+            <div className=" flex flex-col w-full text-lg justify-center created mt-8">
                 <div>Created by Navaneeth Nivol.</div>
                 <div>Launched on 17th of Feb, 2024.</div>
             </div>
