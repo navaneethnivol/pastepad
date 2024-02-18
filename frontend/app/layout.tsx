@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lexend_deca.className}  w-4/6 sm:w-5/6 items-center content-center sm:mx-auto pt-8`}>
+      <body className={`${lexend_deca.className}  w-5/6 items-center content-center mx-auto pt-10`}>
         <Navigation></Navigation>
         {children}
         <SpeedInsights />

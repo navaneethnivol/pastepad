@@ -7,11 +7,11 @@ const { publicRuntimeConfig } = getConfig();
 import "./footer.css";
 
 export default function Footer() {
-    return (
-        <footer>
-            <div className="flex flex-row justify-between text-sm">
 
-                <div className="grid grid-col-3 grid-flow-col gap-3">
+    return (
+        <footer className='mt-8'>
+            <div className="flex flex-row justify-between text-sm">
+                <div className="grid grid-col-3 grid-flow-row sm:grid sm:grid-flow-col gap-3">
                     <a href="mailto:navaneethsainidadavolu@gmail.com" className="flex flex-row items-center">
                         <FontAwesomeIcon className="mr-2" icon={faEnvelope}></FontAwesomeIcon>
                         Contact
@@ -26,7 +26,7 @@ export default function Footer() {
                     </a>
                 </div>
 
-                <div className="grid grid-col-2 grid-flow-col gap-3">
+                <div className="grid grid-row-2 grid-flow-row sm:grid-col-2 sm:grid-flow-col gap3">
                     <a href="" className="flex flex-row items-center">
                         <FontAwesomeIcon className="mr-2" icon={faPalette}></FontAwesomeIcon>
                         Dark
