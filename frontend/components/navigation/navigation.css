@@ -18,6 +18,17 @@ header #logo .text .top {
   transition: color .125s, opacity .125s;
 }
 
-.button :hover {
+.button {
   color: var(--sub-color);
+}
+
+.button :hover {
+  color: var(--text-color);
+}
+
+header #logo .icon {
+  align-items: center;
+  background-color: transparent;
+  display: grid;
+  width: 2.5rem;
 }

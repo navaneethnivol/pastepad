@@ -26,7 +26,7 @@ export default function Footer() {
                     </a>
                 </div>
 
-                <div className="grid grid-row-2 grid-flow-row sm:grid-col-2 sm:grid-flow-col gap3">
+                <div className="grid grid-row-2 grid-flow-row sm:grid-col-2 sm:grid-flow-col gap-3">
                     <a href="" className="flex flex-row items-center">
                         <FontAwesomeIcon className="mr-2" icon={faPalette}></FontAwesomeIcon>
                         Dark
