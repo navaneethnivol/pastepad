@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 
 import ConfigBar from '@/components/config-bar/config-bar';
-import CustomSettingsPopup from '@/components/popups/custom-settings/custom-settings';
+import MyButton from '@/components/button/button';
+
 
 export default function Home() {
   return (
@@ -17,12 +18,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-row justify-center m-8">
-          <div className="share-button rounded-[10px] p-2">
-            <button className="flex flex-row items-center">
-              <FontAwesomeIcon icon={faShare} className="mr-2"></FontAwesomeIcon>
-              share
-            </button>
-          </div>
+          <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
         </div>
 
         {/* <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.'></CustomSettingsPopup> */}

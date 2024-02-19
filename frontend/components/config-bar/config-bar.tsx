@@ -42,7 +42,7 @@ const useMediaQuery = (width: any) => {
 
 export default function ConfigBar() {
 
-    const isBreakpoint = useMediaQuery(449);
+    const isBreakpoint = useMediaQuery(450);
 
     return (
         <div className="flex flex-row items-center justify-center text-sm m-8">

@@ -32,7 +32,7 @@ export default function Info() {
                 <div className="my-2">
                     Thanks to everyone who has supported this project. It would not be possible without you and your continued support.
                 </div>
-                <Button name="Support" icon={faDonate} target="_blank" href="https://www.buymeacoffee.com/navaneethsr"></Button>
+                <Button name="Support" icon={faDonate} target="_blank" href="https://www.buymeacoffee.com/navaneethsr" className="p-6"></Button>
             </div>
 
             <div className="my-4">
@@ -43,10 +43,10 @@ export default function Info() {
                     If you encounter a bug, have a feature request or just want to say hi - here are the different ways you can contact me directly.
                 </div>
                 <div className="grid sm:grid-col-4 sm:grid-flow-col grid-row-2 grid-flow-rol gap-4">
-                    <Button name="Mail" icon={faEnvelope} target="_blank" href="mailto:navaneethsainidadavolu@gmail.com"></Button>
-                    <Button name="Twitter" icon={faTwitter} target="_blank" href="https://x.com"></Button>
-                    <Button name="Discord" icon={faDiscord} target="_blank" href="https://discord.com"></Button>
-                    <Button name="Github" icon={faGithub} target="_blank" href="https://github.com"></Button>
+                    <Button name="Mail" icon={faEnvelope} target="_blank" href="mailto:navaneethsainidadavolu@gmail.com" className="p-6"></Button>
+                    <Button name="Twitter" icon={faTwitter} target="_blank" href="https://x.com" className="p-6"></Button>
+                    <Button name="Discord" icon={faDiscord} target="_blank" href="https://discord.com" className="p-6"></Button>
+                    <Button name="Github" icon={faGithub} target="_blank" href="https://github.com" className="p-6"></Button>
                 </div>
             </div>
 

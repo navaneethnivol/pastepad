@@ -17,8 +17,8 @@ interface ButtonProps {
 
 export default function Button({ name, href, icon, target, className }: ButtonProps) {
     return (
-        <Link href={href} className={"flex flex-row items-center justify-center button p-6 rounded-[10px] hover:invert " + `${className}`} target={target}>
-            {icon && <FontAwesomeIcon icon={icon} className='mx-2'></FontAwesomeIcon>}
+        <Link href={href} className={"flex flex-row items-center justify-center button rounded-[10px] hover:invert " + `${className}`} target={target}>
+            {icon && <FontAwesomeIcon icon={icon} className='mr-2'></FontAwesomeIcon>}
             {name}
         </Link>
     );
