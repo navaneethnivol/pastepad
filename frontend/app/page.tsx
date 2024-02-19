@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 
 import ConfigBar from '@/components/config-bar/config-bar';
+import CustomSettingsPopup from '@/components/popups/custom-settings/custom-settings';
 
 export default function Home() {
   return (
@@ -23,6 +24,10 @@ export default function Home() {
             </button>
           </div>
         </div>
+
+        {/* <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.'></CustomSettingsPopup> */}
+
+        {/* <CustomSettingsPopup name="Page duration" title='Total time: 1 second' message='Input the total number of time in seconds for this page to stay alive.'></CustomSettingsPopup> */}
 
       </section>
 
