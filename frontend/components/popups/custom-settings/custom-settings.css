@@ -1,0 +1,11 @@
+.text-color {
+    color: var(--sub-color);
+}
+
+#input {
+    background-color: var(--sub-alt-color);
+}
+
+.popup-box {
+    background-color: var(--bg-color);
+}
