@@ -7,6 +7,10 @@ import ConfigBar from '@/components/config-bar/config-bar';
 import MyButton from '@/components/button/button';
 import { PadData } from '@/types/configBar';
 
+interface CreateResponse {
+  status: boolean,
+  id: string
+}
 
 export default function Home() {
 
@@ -21,6 +25,8 @@ export default function Home() {
     custom: false,
     input: ""
   });
+
+  const [link, setLink] = useState("");
 
   function handleConfigBarType(type: 'views' | 'time') {
     if (type == 'views') {
@@ -58,7 +64,7 @@ export default function Home() {
     }
   }
 
-  const createPad = async (data: PadData) => {
+  async function createPad(data: PadData): Promise<CreateResponse> {
     const response = await fetch("http://152.67.251.107:9000/create", {
       method: 'POST',
       headers: {
@@ -66,14 +72,16 @@ export default function Home() {
       },
       body: JSON.stringify(data)
     });
-    const result = await response.json();
+    const result: CreateResponse = await response.json();
     console.log(result);
+    return result;
   }
 
   async function handleSubmit() {
     console.log("Current Data");
     console.log(padData);
-    await createPad(padData);
+    const data: CreateResponse = await createPad(padData);
+    navigator.clipboard.writeText("https://pastepad.vercel.app/note/" + data.id);
   }
 
   return (
