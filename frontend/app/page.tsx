@@ -59,7 +59,7 @@ export default function Home() {
   }
 
   const createPad = async (data: PadData) => {
-    const response = await fetch("http://localhost:9000/create", {
+    const response = await fetch("http://152.67.251.107:9000/create", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -14,6 +14,7 @@ import (
 var db *cache.Cache
 
 func init() {
+	// By Default data in the cache is valid till 1 Week.
 	db = cache.New(5*time.Minute, 10*time.Minute)
 	fmt.Println("Cache Initialized")
 }
@@ -22,14 +23,34 @@ func main() {
 
 	r := mux.NewRouter()
 
-	// By Default data in the cache is valid till 1 Week.
-
 	r.HandleFunc("/create", createNewPad).Methods("POST")
 	r.HandleFunc("/view/{id}", getPad).Methods("GET")
 
+	allowedOrigins := []string{"http://localhost:3000", "https://pastepad.vercel.app"}
+
+	corsHandler := func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+			origin := r.Header.Get("Origin")
+			if isOriginAllowed(origin, allowedOrigins) {
+				w.Header().Set("Access-Control-Allow-Origin", origin)
+			}
+
+			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+			w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+			if r.Method == "OPTIONS" {
+				w.WriteHeader(http.StatusOK)
+				return
+			}
+
+			next.ServeHTTP(w, r)
+		})
+	}
+
 	port := ":9000"
 
-	err := http.ListenAndServe(port, r)
+	err := http.ListenAndServe(port, corsHandler(r))
 
 	if err != nil {
 		fmt.Println("Server failed to start:", err)
@@ -136,4 +157,13 @@ func generateRandomString(length int) string {
 		randomString[i] = charset[rand.Intn(len(charset))]
 	}
 	return string(randomString)
+}
+
+func isOriginAllowed(origin string, allowedOrigins []string) bool {
+	for _, allowedOrigin := range allowedOrigins {
+		if origin == allowedOrigin {
+			return true
+		}
+	}
+	return false
 }
