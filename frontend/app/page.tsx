@@ -81,7 +81,7 @@ export default function Home() {
 
       <section className="h-full flex flex-col my-8">
 
-        <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData} settings></ConfigBar>
+        <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData}></ConfigBar>
 
         <div id="input">
           <textarea className="rounded-[10px] w-full p-4 text-input-box h-3/4" placeholder="insert text here" onChange={(e) => {
