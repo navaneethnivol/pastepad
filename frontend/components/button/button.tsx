@@ -7,7 +7,7 @@ import "./button.css";
 
 
 interface ButtonProps {
-    name: string;
+    name: string
     href: string;
     target: HTMLAttributeAnchorTarget
     icon?: IconDefinition
@@ -15,7 +15,7 @@ interface ButtonProps {
 }
 
 
-export default function Button({ name, href, icon, target, className }: ButtonProps) {
+export default function MyButton({ name, href, icon, target, className }: ButtonProps) {
     return (
         <Link href={href} className={"flex flex-row items-center justify-center button rounded-[10px] hover:invert " + `${className}`} target={target}>
             {icon && <FontAwesomeIcon icon={icon} className='mr-2'></FontAwesomeIcon>}

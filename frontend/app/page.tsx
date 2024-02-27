@@ -1,24 +1,101 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+"use client"
+
+import { useState } from 'react';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 
 import ConfigBar from '@/components/config-bar/config-bar';
 import MyButton from '@/components/button/button';
+import { PadData } from '@/types/configBar';
 
 
 export default function Home() {
+
+  let settings = {
+    views: [1, 2, 3, 4],
+    time: [15, 30, 60, 120]
+  };
+
+  const [padData, setPadData] = useState<PadData>({
+    type: 'views',
+    count: settings.views[0],
+    custom: false,
+    input: ""
+  });
+
+  function handleConfigBarType(type: 'views' | 'time') {
+    if (type == 'views') {
+      setPadData({
+        ...padData,
+        type: 'views',
+        count: settings.views[0],
+        custom: false
+      });
+    }
+    else {
+      setPadData({
+        ...padData,
+        type: 'time',
+        count: settings.time[0],
+        custom: false
+      });
+    }
+  }
+
+  function handleConfigBarValue(type: 'pre-defined' | 'custom', value: number) {
+    if (type == 'pre-defined') {
+      setPadData({
+        ...padData,
+        count: value,
+        custom: false
+      });
+    }
+    else {
+      setPadData({
+        ...padData,
+        count: value,
+        custom: true
+      });
+    }
+  }
+
+  const createPad = async (data: PadData) => {
+    const response = await fetch("http:localhost:3100/create", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    console.log(result);
+  }
+
+  async function handleSubmit() {
+    console.log("Current Data");
+    console.log(padData);
+    await createPad(padData);
+  }
+
   return (
     <main>
 
       <section className="h-full flex flex-col my-8">
 
-        <ConfigBar></ConfigBar>
+        <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData} settings></ConfigBar>
 
         <div id="input">
-          <textarea className="rounded-[10px] w-full p-4 text-input-box h-3/4" placeholder="insert text here" />
+          <textarea className="rounded-[10px] w-full p-4 text-input-box h-3/4" placeholder="insert text here" onChange={(e) => {
+            setPadData({
+              ...padData,
+              input: e.target.value
+            })
+          }} />
         </div>
 
         <div className="flex flex-row justify-center m-8">
-          <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
+          <button onClick={handleSubmit}>
+            <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
+          </button>
         </div>
 
         {/* <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.'></CustomSettingsPopup> */}
