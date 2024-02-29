@@ -26,8 +26,6 @@ export default function Home() {
     input: ""
   });
 
-  const [link, setLink] = useState("");
-
   function handleConfigBarType(type: 'views' | 'time') {
     if (type == 'views') {
       setPadData({
@@ -73,13 +71,10 @@ export default function Home() {
       body: JSON.stringify(data)
     });
     const result: CreateResponse = await response.json();
-    console.log(result);
     return result;
   }
 
   async function handleSubmit() {
-    console.log("Current Data");
-    console.log(padData);
     const data: CreateResponse = await createPad(padData);
     navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
   }
