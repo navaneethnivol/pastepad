@@ -53,10 +53,10 @@ export default function Header() {
                 <div className='w-min p-2'>
                     <Link id="logo" href="/" className="flex flex-row content-center">
                         <FontAwesomeIcon icon={faPaste} className='icon fa-xl'></FontAwesomeIcon>
-                        {!isBreakpoint && <h1 className="text">
+                        <h1 className="text">
                             <div className="top">cmd-c + cmd-v</div>
                             pastepad
-                        </h1>}
+                        </h1>
                     </Link>
                 </div>
 
@@ -68,7 +68,7 @@ export default function Header() {
                         </div>
                     </Link>
 
-                    <MyButton name='+ new' href='/' target='' className='p-2 text-md'></MyButton>
+                    {!isBreakpoint ? <MyButton name='+ new' href='/' target='' className='p-2 text-md'></MyButton> : <MyButton name='+' href='/' target='' className='p-2 text-md'></MyButton>}
                 </nav>
             </div>
         </header >
