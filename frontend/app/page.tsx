@@ -65,7 +65,7 @@ export default function Home() {
   }
 
   async function createPad(data: PadData): Promise<CreateResponse> {
-    const response = await fetch("http://152.67.251.107:9000/create", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/create`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
