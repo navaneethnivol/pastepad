@@ -50,14 +50,14 @@ func main() {
 
 	port := ":9000"
 
+	fmt.Printf("Server Started on Port %s", port)
+
 	err := http.ListenAndServe(port, corsHandler(r))
 
 	if err != nil {
 		fmt.Println("Server failed to start:", err)
 		return
 	}
-
-	fmt.Printf("Server Started on Port %s", port)
 }
 
 // Route Handlers
@@ -71,14 +71,14 @@ func createNewPad(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	id := generateRandomString(10)
+	var id string
 
 	for {
+		id = generateRandomString(10)
 		_, exists := db.Get(id)
 		if !exists {
 			break
 		}
-		id = generateRandomString(10)
 	}
 
 	if requestBody.Type == "views" {
@@ -110,16 +110,13 @@ func getPad(w http.ResponseWriter, r *http.Request) {
 	id := params["id"]
 
 	cacheValue, exists := db.Get(id)
-	value, ok := cacheValue.(CreatePadRequest)
-	if !ok {
-		// Handle the case where the value is not of type CreatePadRequest
-		fmt.Print("Incorrect value type", ok)
-	}
 
 	if !exists {
 		http.Error(w, "PastePad not found", http.StatusInternalServerError)
 		return
 	}
+
+	value := cacheValue.(CreatePadRequest)
 
 	if value.Type == "views" {
 		if value.Count > 1 {
