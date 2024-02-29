@@ -75,9 +75,9 @@ export default function Home() {
     return result;
   }
 
-  async function handleSubmit() {
-    createPad(padData).then((data: CreateResponse) => {
-      navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
+  function handleSubmit() {
+    createPad(padData).then(async (data: CreateResponse) => {
+      await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
       toast.success('Pastepad link copied to clipboard.')
     }).catch(err => {
       toast.error(err.message);

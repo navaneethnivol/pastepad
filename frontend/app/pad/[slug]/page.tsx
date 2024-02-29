@@ -27,8 +27,8 @@ export default async function ViewPage(context: any) {
                 </div>
 
                 <div className="flex flex-row justify-center m-8">
-                    <button onClick={() => {
-                        navigator.clipboard.writeText(data.input);
+                    <button onClick={async () => {
+                        await navigator.clipboard.writeText(data.input);
                         toast.success('Pastepad copied to clipboard.')
                     }}>
                         <MyButton icon={faCopy} name='copy' href='' target='' className='p-2'></MyButton>
