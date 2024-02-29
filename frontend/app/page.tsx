@@ -81,7 +81,7 @@ export default function Home() {
     console.log("Current Data");
     console.log(padData);
     const data: CreateResponse = await createPad(padData);
-    navigator.clipboard.writeText("https://pastepad.vercel.app/note/" + data.id);
+    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
   }
 
   return (
