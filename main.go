@@ -84,7 +84,7 @@ func createNewPad(w http.ResponseWriter, r *http.Request) {
 	if requestBody.Type == "views" {
 		db.Set(id, requestBody, cache.NoExpiration)
 	} else {
-		db.Set(id, requestBody, time.Duration(time.Duration(requestBody.Count).Minutes()))
+		db.Set(id, requestBody, time.Duration(requestBody.Count)*time.Minute)
 	}
 
 	responseBody := CreatePadResponse{
@@ -109,11 +109,25 @@ func getPad(w http.ResponseWriter, r *http.Request) {
 
 	id := params["id"]
 
-	value, exists := db.Get(id)
+	cacheValue, exists := db.Get(id)
+	value, ok := cacheValue.(CreatePadRequest)
+	if !ok {
+		// Handle the case where the value is not of type CreatePadRequest
+		fmt.Print("Incorrect value type", ok)
+	}
 
 	if !exists {
 		http.Error(w, "PastePad not found", http.StatusInternalServerError)
 		return
+	}
+
+	if value.Type == "views" {
+		if value.Count > 1 {
+			value.Count = value.Count - 1
+			db.Set(id, value, cache.NoExpiration)
+		} else {
+			defer db.Delete(id)
+		}
 	}
 
 	jsonResponse, err := json.Marshal(value)
