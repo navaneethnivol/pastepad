@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
+import { toast } from 'sonner'
 
 import ConfigBar from '@/components/config-bar/config-bar';
 import MyButton from '@/components/button/button';
@@ -75,8 +76,12 @@ export default function Home() {
   }
 
   async function handleSubmit() {
-    const data: CreateResponse = await createPad(padData);
-    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
+    createPad(padData).then((data: CreateResponse) => {
+      navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
+      toast.success('Pastepad link copied to clipboard.')
+    }).catch(err => {
+      toast.error(err.message);
+    });
   }
 
   return (

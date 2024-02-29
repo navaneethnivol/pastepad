@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lexend_Deca } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/react';
+import { Toaster } from 'sonner'
 
 import "./globals.css";
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <Footer></Footer>
+        <Toaster position="bottom-center" richColors />
       </body>
     </html>
   );
