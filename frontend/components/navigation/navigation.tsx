@@ -9,43 +9,7 @@ import MyButton from '@/components/button/button';
 
 import "./navigation.css";
 
-const useMediaQuery = (width: any) => {
-    const [targetReached, setTargetReached] = useState(false);
-
-    const updateTarget = useCallback((e: any) => {
-        if (e.matches) {
-            setTargetReached(true);
-        } else {
-            setTargetReached(false);
-        }
-    }, []);
-
-    useEffect(() => {
-        const media = window.matchMedia(`(max-width: ${width}px)`);
-        if (media.addEventListener) {
-            media.addEventListener("change", updateTarget);
-        } else {
-            // compatibility for browser that dont have addEventListener
-            media.addListener(updateTarget);
-        }
-        // Check on mount (callback is not called until a change occurs)
-        if (media.matches) {
-            setTargetReached(true);
-        }
-        if (media.removeEventListener) {
-            return () => media.removeEventListener('change', updateTarget);
-        } else {
-            // compatibility for browser that dont have removeEventListener
-            return () => media.removeListener(updateTarget);
-        }
-    }, []);
-
-    return targetReached;
-};
-
 export default function Header() {
-
-    const isBreakpoint = useMediaQuery(450);
 
     return (
         <header>
@@ -68,7 +32,7 @@ export default function Header() {
                         </div>
                     </Link>
 
-                    {!isBreakpoint ? <MyButton name='+ new' href='/' target='' className='p-2 text-md'></MyButton> : <MyButton name='+' href='/' target='' className='p-2 text-md'></MyButton>}
+                    <MyButton name='+ new' href='/' target='' className='p-2 text-md'></MyButton>
                 </nav>
             </div>
         </header >
