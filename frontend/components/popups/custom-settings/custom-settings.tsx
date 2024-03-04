@@ -34,7 +34,7 @@ export default function CustomSettingsPopup({ name, title, message, updateValue 
                 {message && <div className="text-color text-md">{message} </div>}
                 {error && <div className=" my-2 text-[#FF0000] text-md">Value should be more than 0.</div>}
                 <button className="w-full" disabled={error} onClick={() => {
-                    updateValue('custom', value);
+                    updateValue('custom', parseInt(value));
                 }}>
                     <MyButton name="ok" href="" target="" className="my-4 p-2"></MyButton>
                 </button>
