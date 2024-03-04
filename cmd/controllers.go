@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -35,12 +36,11 @@ func createNewPad(w http.ResponseWriter, r *http.Request) {
 	if requestBody.Type == "views" {
 		db.Set(id, requestBody, cache.NoExpiration)
 	} else {
-		db.Set(id, requestBody, time.Duration(requestBody.Count)*time.Minute)
+		db.Set(id, requestBody, time.Duration(requestBody.Count)*time.Second)
 	}
 
 	responseBody := models.CreatePadResponse{
-		Status: true,
-		ID:     id,
+		PadID: id,
 	}
 
 	jsonResponse, err := json.Marshal(responseBody)
@@ -65,7 +65,7 @@ func getPad(w http.ResponseWriter, r *http.Request) {
 	cacheValue, exists := db.Get(id)
 
 	if !exists {
-		http.Error(w, "PastePad not found", http.StatusInternalServerError)
+		http.Error(w, "Pastepad not found.", http.StatusNotFound)
 		return
 	}
 
@@ -74,13 +74,18 @@ func getPad(w http.ResponseWriter, r *http.Request) {
 	if value.Type == "views" {
 		if value.Count > 1 {
 			value.Count = value.Count - 1
+			fmt.Println(value)
 			db.Set(id, value, cache.NoExpiration)
 		} else {
 			defer db.Delete(id)
 		}
 	}
 
-	jsonResponse, err := json.Marshal(value)
+	responseBody := models.GetPadResponse{
+		Input: value.Input,
+	}
+
+	jsonResponse, err := json.Marshal(responseBody)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

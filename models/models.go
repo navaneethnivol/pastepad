@@ -8,13 +8,9 @@ type CreatePadRequest struct {
 }
 
 type CreatePadResponse struct {
-	Status bool   `json:"status"`
-	ID     string `json:"id"`
+	PadID string `json:"pad_id"`
 }
 
 type GetPadResponse struct {
-	Type   string `json:"type"`
-	Count  int    `json:"count"`
-	Custom bool   `json:"custom"`
-	Input  string `json:"input"`
+	Input string `json:"input"`
 }
