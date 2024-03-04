@@ -1,13 +1,11 @@
 "use client"
 
-import React from 'react';
-import { useState, useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faEye, faGear, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { PadData } from '@/types/configBar';
-import Popup from 'reactjs-popup';
 
 import CustomSettingsPopup from '@/components/popups/custom-settings/custom-settings';
+import MyDialog from '@/components/dialog/dialog';
 
 import "./config-bar.css";
 
@@ -48,18 +46,21 @@ export default function ConfigBar({ onTypeChange, onValueChange, padData }: { on
                     ) : (
                         settings.time.map(item => <button key={item} className={"flex flex-row items-center hover:text-[var(--caret-color)]" + " " + (padData.count == item && "text-[var(--caret-color)]")} onClick={() => onValueChange('pre-defined', item)} >{item}</button>)
                     )}
-                    <Popup trigger={
-                        <button className={"flex flex-row items-center hover:text-[var(--caret-color)]" + " " + (padData.custom && "text-[var(--caret-color)]")} onClick={() => onValueChange('custom', 240)}>
+
+                    <MyDialog trigger={
+                        <div className={"flex flex-row items-center hover:text-[var(--caret-color)]" + " " + (padData.custom && "text-[var(--caret-color)]")}>
                             <FontAwesomeIcon icon={faScrewdriverWrench}></FontAwesomeIcon>
-                        </button>
-                    } position="right center" modal nested>
-                        {padData.type == "views"
-                            ? <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.' updateValue={onValueChange} ></CustomSettingsPopup>
-                            : <CustomSettingsPopup name="Page duration" title='Total time: 1 second' message='Input the total number of time in seconds for this page to stay alive.' updateValue={onValueChange}></CustomSettingsPopup>
+                        </div>
+                    }
+                    >
+                        {
+                            padData.type == "views"
+                                ? <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.' updateValue={onValueChange}></CustomSettingsPopup>
+                                : <CustomSettingsPopup name="Page duration" title='Total time: 1 second' message='Input the total number of time in seconds for this page to stay alive.' updateValue={onValueChange}></CustomSettingsPopup>
                         }
-                    </Popup>
+                    </MyDialog>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
