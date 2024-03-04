@@ -52,6 +52,7 @@ export default function Home() {
         count: value,
         custom: false
       });
+      console.log(padData);
     }
     else {
       setPadData({
@@ -59,6 +60,7 @@ export default function Home() {
         count: value,
         custom: true
       });
+      console.log(padData);
     }
   }
 
@@ -106,10 +108,6 @@ export default function Home() {
             <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
           </button>
         </div>
-
-        {/* <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.'></CustomSettingsPopup> */}
-
-        {/* <CustomSettingsPopup name="Page duration" title='Total time: 1 second' message='Input the total number of time in seconds for this page to stay alive.'></CustomSettingsPopup> */}
 
       </section>
 
