@@ -6,8 +6,5 @@ export interface PadExpiryConfig {
 
 
 export interface PadData {
-    type: 'views' | 'time',
-    count: number,
-    custom: boolean,
     input: string
 }

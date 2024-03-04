@@ -9,8 +9,7 @@ import MyButton from '@/components/button/button';
 import { PadData } from '@/types/configBar';
 
 interface CreateResponse {
-  status: boolean,
-  id: string
+  pad_id: string
 }
 
 export default function Home() {
@@ -64,7 +63,7 @@ export default function Home() {
   }
 
   async function createPad(data: PadData): Promise<CreateResponse> {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/create`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +77,7 @@ export default function Home() {
   function handleSubmit() {
     createPad(padData).then((data: CreateResponse) => {
       setTimeout(async () => {
-        await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.id);
+        await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.pad_id);
         toast.success('Pastepad link copied to clipboard.')
       }, 0);
     }).catch(err => {
