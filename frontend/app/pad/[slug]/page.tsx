@@ -26,7 +26,7 @@ export default async function ViewPage(context: any) {
                 <section className="h-full flex flex-col my-8">
 
                     <div id="input">
-                        <textarea className="rounded-[10px] w-full p-4 text-input-box h-3/4" value={data.input} readOnly />
+                    <textarea className="rounded-[10px] w-full h-96 p-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" value={data.input} readOnly />
                     </div>
 
                     <div className="flex flex-row justify-center m-8">
