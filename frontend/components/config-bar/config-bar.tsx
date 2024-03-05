@@ -25,7 +25,7 @@ export default function ConfigBar({ onTypeChange, onValueChange, padData }: { on
 
     return (
         <div className="flex flex-row items-center justify-center text-sm m-8">
-            <div id='config-bar' className="flex flex-row justify-around rounded-[10px] p-3">
+            <div className="flex flex-row justify-around rounded-[10px] p-3 bg-[var(--sub-alt-color)] text-[var(--sub-color)]">
                 <div className="grid grid-col-2 grid-flow-col gap-4">
                     <button className={"flex flex-row items-center hover:text-[var(--caret-color)]" + " " + (padData.type == "views" && "text-[var(--caret-color)]")} onClick={() => onTypeChange('views')}>
                         <FontAwesomeIcon icon={faEye} className="pr-1"></FontAwesomeIcon>
@@ -38,7 +38,7 @@ export default function ConfigBar({ onTypeChange, onValueChange, padData }: { on
                     </button>
                 </div>
 
-                <div className="config-divider w-1 mx-4 rounded h-5"></div>
+                <div className="w-1 mx-4 rounded h-5 bg-[var(--bg-color)]"></div>
 
                 <div className="grid grid-cols-5 grid-flow-row justify-items-center gap-4">
                     {padData.type === "views" ? (

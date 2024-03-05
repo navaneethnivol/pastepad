@@ -6,57 +6,22 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #323437;
-    --main-color: #e2b714;
-    --caret-color: #e2b714;
-    --sub-color: #646669;
-    --sub-alt-color: #2c2e31;
-    --text-color: #d1d0c5;
-    --error-color: #ca4754;
-    --error-extra-color: #7e2a33;
-    --colorful-error-color: #ca4754;
-    --colorful-error-extra-color: #7e2a33;
-  }
-}
-
-body {
-  color: var(--text-color);
-  background: var(--bg-color);
+  --bg-color: #323437;
+  --main-color: #e2b714;
+  --caret-color: #e2b714;
+  --sub-color: #646669;
+  --sub-alt-color: #2c2e31;
+  --text-color: #d1d0c5;
+  --error-color: #ca4754;
+  --error-extra-color: #7e2a33;
+  --colorful-error-color: #ca4754;
+  --colorful-error-extra-color: #7e2a33;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
-
-main #input .text-input-box {
-  background-color: var(--sub-alt-color);
-  width: 100%;
-  height: 50vh;
-  resize: none;
-}
-
-main #input .text-input-box::placeholder {
-  color: var(--sub-color);
-}
-
-section #config-bar {
-  background-color: var(--sub-alt-color);
-  color: var(--sub-color);
-}
-
-section #config-bar .config-divider {
-  background-color: var(--bg-color);
-}
-
-main .share-button {
-  background-color: var(--sub-alt-color);
-  color: var(--main-color);
 }
 
 textarea {
