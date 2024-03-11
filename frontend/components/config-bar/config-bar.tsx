@@ -7,8 +7,6 @@ import { PadData } from '@/types/configBar';
 import CustomSettingsPopup from '@/components/popups/custom-settings/custom-settings';
 import MyDialog from '@/components/dialog/dialog';
 
-import "./config-bar.css";
-
 
 export interface Settings {
     views: number[],

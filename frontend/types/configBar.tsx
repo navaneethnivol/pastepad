@@ -4,10 +4,13 @@ export interface PadExpiryConfig {
     custom: boolean
 }
 
-
 export interface PadData {
     type: 'views' | 'time',
     count: number,
     custom: boolean
+    input: string
+}
+
+export interface ViewPadData {
     input: string
 }

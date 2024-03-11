@@ -88,27 +88,23 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <section className="h-full my-8 flex flex-col justify-center">
 
-      <section className="h-full flex flex-col my-8">
+      <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData}></ConfigBar>
 
-        <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData}></ConfigBar>
+      <textarea className="rounded-[10px] w-full h-2/3 p-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" placeholder="insert text here" onChange={(e) => {
+        setPadData({
+          ...padData,
+          input: e.target.value
+        })
+      }} />
 
-        <textarea className="rounded-[10px] w-full h-96 p-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" placeholder="insert text here" onChange={(e) => {
-          setPadData({
-            ...padData,
-            input: e.target.value
-          })
-        }} />
+      <div className="flex flex-row justify-center m-8">
+        <button onClick={handleSubmit}>
+          <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
+        </button>
+      </div>
 
-        <div className="flex flex-row justify-center m-8">
-          <button onClick={handleSubmit}>
-            <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
-          </button>
-        </div>
-
-      </section>
-
-    </main>
+    </section>
   );
 }
