@@ -77,6 +77,10 @@ export default function Home() {
   }
 
   function handleSubmit() {
+    if (padData.input.length == 0) {
+      toast.warning("Input required.");
+      return;
+    }
     createPad(padData).then((data: CreateResponse) => {
       setTimeout(async () => {
         await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.pad_id);
