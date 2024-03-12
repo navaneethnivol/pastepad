@@ -30,8 +30,6 @@ export default async function ViewPage(context: any) {
         return <div className="flex  items-center justify-center text-white">
         <div className="text-center">
           <p className="text-9xl font-bold">404 <span className='font-normal'>| &nbsp; This page could not be found.</span></p>
-          
-         
         </div>
       </div>;
     }
