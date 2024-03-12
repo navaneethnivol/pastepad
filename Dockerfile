@@ -1,4 +1,4 @@
-FROM golang:latest AS build
+FROM golang:latest AS build-stage
 
 WORKDIR /app
 
@@ -6,15 +6,16 @@ COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY . .
+COPY . ./
 
-RUN go build -o pastepad ./cmd/
+RUN CGO_ENABLED=0 GOOS=linux go build -o /pastepad ./cmd/
 
+FROM alpine:latest AS build-release-stage
 
-FROM alpine:latest
+WORKDIR /
 
-WORKDIR /app
+COPY --from=build-stage /pastepad /pastepad
 
-COPY --from=build /app/pastepad /app/pastepad
+EXPOSE 9000
 
-ENTRYPOINT ["./pastepad"]
+ENTRYPOINT ["/pastepad"]
