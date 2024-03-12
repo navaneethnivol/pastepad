@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 export default function Footer() {
 
     return (
-        <footer className='my-8 text-[var(--sub-color)]'>
+        <footer className='mb-8 text-[var(--sub-color)]'>
             <div className="flex flex-row justify-between text-sm">
                 <div className="grid grid-col-3 grid-flow-row sm:grid sm:grid-flow-col gap-3">
                     <a href="mailto:navaneethsainidadavolu@gmail.com" className="flex flex-row items-center hover:text-[var(--main-color)]">

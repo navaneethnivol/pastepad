@@ -96,14 +96,14 @@ export default function Home() {
 
       <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData}></ConfigBar>
 
-      <textarea className="rounded-[10px] w-full h-full sm:h-2/3 p-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" placeholder="insert text here" onChange={(e) => {
+      <textarea className="rounded-[10px] w-full h-full sm:h-2/3 p-4 my-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" placeholder="insert text here" onChange={(e) => {
         setPadData({
           ...padData,
           input: e.target.value
         })
       }} />
 
-      <div className="flex flex-row justify-center m-8">
+      <div className="flex flex-row justify-center mt-4">
         <button onClick={handleSubmit}>
           <MyButton icon={faShare} name='share' href='' target='' className='p-2'></MyButton>
         </button>
