@@ -1,7 +1,0 @@
-footer {
-    color: var(--sub-color);
-}
-
-footer a:hover {
-    color: var(--main-color);
-}
