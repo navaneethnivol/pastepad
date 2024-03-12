@@ -9,7 +9,7 @@ import Button from "@/components/button/button";
 
 export default function Info() {
     return (
-        <div>
+        <div className="h-full">
 
             <div className=" flex flex-col w-full text-lg justify-center created mt-8">
                 <div>Created by Navaneeth Nivol.</div>
