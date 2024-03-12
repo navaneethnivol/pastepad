@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faDonate, faCode, faPalette, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import getConfig from 'next/config';
+import { toast } from 'sonner';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -26,10 +27,12 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col items-start sm:flex-row">
-                    <a href="" className="flex flex-row items-center mb-3 sm:mr-3 hover:text-[var(--main-color)]">
+                    <button className="flex flex-row items-center mb-3 sm:mr-3 hover:text-[var(--main-color)]" onClick={() => {
+                        toast.info("Theme not implemented yet.");
+                    }}>
                         <FontAwesomeIcon className="mr-2" icon={faPalette}></FontAwesomeIcon>
                         Dark
-                    </a>
+                    </button>
                     <a href="" className="flex flex-row items-center hover:text-[var(--main-color)]">
                         <FontAwesomeIcon className="mr-2" icon={faCodeBranch}></FontAwesomeIcon>
                         v{publicRuntimeConfig?.version}
