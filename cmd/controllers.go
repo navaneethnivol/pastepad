@@ -36,7 +36,7 @@ func createNewPad(w http.ResponseWriter, r *http.Request) {
 	if requestBody.Type == "views" {
 		db.Set(id, requestBody, cache.NoExpiration)
 	} else {
-		db.Set(id, requestBody, time.Duration(requestBody.Count)*time.Second)
+		db.Set(id, requestBody, time.Duration(requestBody.Count)*time.Minute)
 	}
 
 	responseBody := models.CreatePadResponse{
