@@ -18,18 +18,26 @@ let settings = {
   time: [15, 30, 60, 120]
 };
 
-const defaultPadSetting:PadData = {
+let currentViewState = {
+  custom: false,
+  count: settings.views[0]
+};
+
+let currentTimeState = {
+  custom: false,
+  count: settings.time[0]
+}
+
+const defaultPadSetting: PadData = {
   type: 'views',
   count: settings.views[0],
   custom: false,
   input: ""
 }
 
-
 export default function Home() {
 
- 
-  let { isNewClicked,setIsNewClicked } = useContext(isNewClickedStore);
+  let { isNewClicked, setIsNewClicked } = useContext(isNewClickedStore);
 
   const [padData, setPadData] = useState<PadData>(defaultPadSetting);
 
@@ -38,16 +46,16 @@ export default function Home() {
       setPadData({
         ...padData,
         type: 'views',
-        count: settings.views[0],
-        custom: false
+        count: currentViewState.count,
+        custom: currentViewState.custom
       });
     }
     else {
       setPadData({
         ...padData,
         type: 'time',
-        count: settings.time[0],
-        custom: false
+        count: currentTimeState.count,
+        custom: currentTimeState.custom
       });
     }
   }
@@ -59,7 +67,6 @@ export default function Home() {
         count: value,
         custom: false
       });
-      console.log(padData);
     }
     else {
       setPadData({
@@ -67,8 +74,30 @@ export default function Home() {
         count: value,
         custom: true
       });
-      console.log(padData);
     }
+
+    if (padData.type == "views") {
+      currentViewState.count = value;
+      if (type == 'pre-defined') {
+        currentViewState.custom = false;
+      }
+      else {
+        currentViewState.custom = true;
+      }
+    }
+    else {
+      currentTimeState.count = value;
+      if (type == 'pre-defined') {
+        currentTimeState.custom = false;
+      }
+      else {
+        currentTimeState.custom = true;
+      }
+    }
+
+    console.log("current PadData: ", padData);
+    console.log("current view: ", currentViewState);
+    console.log("current time: ", currentTimeState);
   }
 
   async function createPad(data: PadData): Promise<CreateResponse> {
@@ -90,7 +119,7 @@ export default function Home() {
     }
     createPad(padData).then((data: CreateResponse) => {
       setTimeout(async () => {
-        await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}/pad/` + data.pad_id);
+        await navigator.clipboard.writeText(`${window.location.href}pad/` + data.pad_id);
         toast.success('Pastepad link copied to clipboard.')
       }, 0);
     }).catch(err => {
@@ -99,11 +128,11 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if(isNewClicked){
+    if (isNewClicked) {
       setPadData(defaultPadSetting)
     }
     setIsNewClicked(false)
-    
+
   }, [isNewClicked])
 
   return (

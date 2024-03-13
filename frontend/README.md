@@ -6,7 +6,6 @@ Create .env.local file in frontend/
 
 ```bash
 NEXT_PUBLIC_BASE_API_URL='http://localhost:9000' or NEXT_PUBLIC_BASE_API_URL='<backend-endpoint-url>'
-NEXT_PUBLIC_BASE_URL='http://localhost:3000' or NEXT_PUBLIC_BASE_URL='frontend-enpoint-url'
 ```
 
 Run the development server:
