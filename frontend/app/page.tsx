@@ -1,30 +1,37 @@
 "use client"
 
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { faShare } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'sonner'
 
 import ConfigBar from '@/components/config-bar/config-bar';
 import MyButton from '@/components/button/button';
 import { PadData } from '@/types/configBar';
+import { isNewClickedStore } from './ContextProvider';
 
 interface CreateResponse {
   pad_id: string
 }
 
+let settings = {
+  views: [1, 2, 3, 4],
+  time: [15, 30, 60, 120]
+};
+
+const defaultPadSetting:PadData = {
+  type: 'views',
+  count: settings.views[0],
+  custom: false,
+  input: ""
+}
+
+
 export default function Home() {
 
-  let settings = {
-    views: [1, 2, 3, 4],
-    time: [15, 30, 60, 120]
-  };
+ 
+  let { isNewClicked,setIsNewClicked } = useContext(isNewClickedStore);
 
-  const [padData, setPadData] = useState<PadData>({
-    type: 'views',
-    count: settings.views[0],
-    custom: false,
-    input: ""
-  });
+  const [padData, setPadData] = useState<PadData>(defaultPadSetting);
 
   function handleConfigBarType(type: 'views' | 'time') {
     if (type == 'views') {
@@ -91,12 +98,20 @@ export default function Home() {
     });
   }
 
+  useEffect(() => {
+    if(isNewClicked){
+      setPadData(defaultPadSetting)
+    }
+    setIsNewClicked(false)
+    
+  }, [isNewClicked])
+
   return (
     <section className="h-full my-8 flex flex-col justify-center">
 
       <ConfigBar onTypeChange={handleConfigBarType} onValueChange={handleConfigBarValue} padData={padData}></ConfigBar>
 
-      <textarea className="rounded-[10px] w-full h-full sm:h-2/3 p-4 my-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" placeholder="insert text here" onChange={(e) => {
+      <textarea className="rounded-[10px] w-full h-full sm:h-2/3 p-4 my-4 text-[var(--sub-color)] bg-[var(--sub-alt-color)]" placeholder="insert text here" value={padData.input} onChange={(e) => {
         setPadData({
           ...padData,
           input: e.target.value

@@ -12,6 +12,9 @@ config.autoAddCss = false
 
 import Navigation from "@/components/navigation/navigation";
 import Footer from '@/components/footer/footer';
+import { JSXElementConstructor } from "react";
+import React from "react";
+import IsNewClickedContext from "./ContextProvider";
 
 const lexend_deca = Lexend_Deca({ subsets: ["latin"] });
 
@@ -23,17 +26,19 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactElement<any, string | JSXElementConstructor<any>>;
 }>) {
   return (
     <html lang="en">
       <body className={`${lexend_deca.className} w-11/12 sm:w-3/5 mx-auto pt-10 text-[var(--text-color)] bg-[var(--bg-color)] flex flex-col justify-between h-screen`}>
-        <Navigation></Navigation>
-        {children}
-        <SpeedInsights />
-        <Analytics />
-        <Footer></Footer>
-        <Toaster position="bottom-center" richColors />
+        <IsNewClickedContext>
+          <Navigation ></Navigation>
+          {children}
+          <SpeedInsights />
+          <Analytics />
+          <Footer></Footer>
+          <Toaster position="bottom-center" richColors />
+        </IsNewClickedContext>
       </body>
     </html>
   );
