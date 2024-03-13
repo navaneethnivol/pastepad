@@ -7,9 +7,10 @@ interface CustomSettingsProps {
     title: string
     message: string
     updateValue: any
+    count: number
 }
 
-export default function CustomSettingsPopup({ name, title, message, updateValue }: CustomSettingsProps) {
+export default function CustomSettingsPopup({ name, title, message, updateValue, count }: CustomSettingsProps) {
 
     const [value, setValue] = useState(0);
     const [error, setError] = useState(false);
@@ -21,7 +22,7 @@ export default function CustomSettingsPopup({ name, title, message, updateValue 
                     {name}
                 </div>
                 {title && <div className="text-color mt-2">{title}</div>}
-                <input type="text" id="input" placeholder="15" className="rounded-[10px] w-full p-4 my-4 bg-[var(--sub-alt-color)]" onChange={(e) => {
+                <input type="text" id="input" placeholder="15" className="rounded-[10px] w-full p-4 my-4 bg-[var(--sub-alt-color)]" value={count} onChange={(e) => {
                     if (e.target.value == "" || parseInt(e.target.value) <= 0) {
                         setError(true);
                     }
