@@ -5,9 +5,27 @@ import Link from "next/link";
 import "./info.css";
 
 import Button from "@/components/button/button";
+import { Contributor } from "@/types/contributor"
+import ContributorCard from "@/components/contributor-card/contributor-card";
 
+async function getContributors() {
+    const response = await fetch("https://api.github.com/repos/navaneethnivol/pastepad/contributors", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        next: {
+            revalidate: 60
+        }
+    });
 
-export default function Info() {
+    return response
+}
+
+export default async function Info() {
+
+    let contributions: Contributor[] = await (await getContributors()).json();
+
     return (
         <div className="h-full">
 
@@ -64,6 +82,19 @@ export default function Info() {
                 </div>
             </div>
 
+            <div className="my-4">
+                <div className="text-2xl heading">
+                    contributors
+                </div>
+                <div className="grid grid-cols-4 gap-3 my-2">
+                    {contributions.map(contributor => <ContributorCard key={contributor.id} contributor={contributor}></ContributorCard>)}
+                </div>
+            </div>
+
         </div>
     );
 }
+
+
+
+// https://api.github.com/repos/navaneethnivol/pastepad/contributors
