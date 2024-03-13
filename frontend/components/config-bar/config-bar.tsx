@@ -54,7 +54,7 @@ export default function ConfigBar({ onTypeChange, onValueChange, padData }: { on
                         {
                             padData.type == "views"
                                 ? <CustomSettingsPopup name="Views count" title='' message='Input the total number of times this page can be visited before expiring.' updateValue={onValueChange} count={padData.count}></CustomSettingsPopup>
-                                : <CustomSettingsPopup name="Page duration" title='Total time: 1 second' message='Input the total number of time in seconds for this page to stay alive.' updateValue={onValueChange} count={padData.count}></CustomSettingsPopup>
+                                : <CustomSettingsPopup name="Page duration" title='Total time: 1 minute' message='Input the total number of time in minutes for this page to stay alive.' updateValue={onValueChange} count={padData.count}></CustomSettingsPopup>
                         }
                     </MyDialog>
                 </div>
