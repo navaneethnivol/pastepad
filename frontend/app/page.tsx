@@ -94,10 +94,6 @@ export default function Home() {
         currentTimeState.custom = true;
       }
     }
-
-    console.log("current PadData: ", padData);
-    console.log("current view: ", currentViewState);
-    console.log("current time: ", currentTimeState);
   }
 
   async function createPad(data: PadData): Promise<CreateResponse> {
