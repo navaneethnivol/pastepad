@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  
+  pastepad:
+    container_name: pastepad
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 9000:9000
+    restart: always
