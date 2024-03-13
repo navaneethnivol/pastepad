@@ -2,8 +2,6 @@ import { faDonate, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
-import "./info.css";
-
 import Button from "@/components/button/button";
 import { Contributor } from "@/types/contributor"
 import ContributorCard from "@/components/contributor-card/contributor-card";
@@ -29,13 +27,13 @@ export default async function Info() {
     return (
         <div className="h-full">
 
-            <div className=" flex flex-col w-full text-lg justify-center created mt-8">
+            <div className=" flex flex-col w-full text-lg justify-center text-center text-[var(--sub-color)] mt-8">
                 <div>Created by Navaneeth Nivol.</div>
                 <div>Launched on 17th of Feb, 2024.</div>
             </div>
 
             <div className="my-4">
-                <div className="text-2xl heading">
+                <div className="text-2xl text-[var(--sub-color)]">
                     about
                 </div>
                 <div className="my-2">
@@ -44,7 +42,7 @@ export default async function Info() {
             </div>
 
             <div className="my-4">
-                <div className="text-2xl heading">
+                <div className="text-2xl text-[var(--sub-color)]">
                     support
                 </div>
                 <div className="my-2">
@@ -54,7 +52,7 @@ export default async function Info() {
             </div>
 
             <div className="my-4">
-                <div className="text-2xl heading">
+                <div className="text-2xl text-[var(--sub-color)]">
                     contact
                 </div>
                 <div className="my-2">
@@ -69,25 +67,25 @@ export default async function Info() {
             </div>
 
             <div className="my-4">
-                <div className="text-2xl heading">
+                <div className="text-2xl text-[var(--sub-color)]">
                     credits
                 </div>
                 <div className="my-2">
                     <div>
-                        <Link href="https://github.com/Miodec" className="credit-name underline">Miodec</Link> for the design inspiration
+                        <Link href="https://github.com/Miodec" className="text-[var(--sub-color)] hover:text-[var(--sub-alt-color)] underline">Miodec</Link> for the design inspiration
                     </div>
                     <div>
-                        <Link href="https://github.com/navaneethnivol/pastepad/graphs/contributors" className="credit-name underline">Contributors</Link> on GitHub that have helped with implementing various features, adding themes and more
+                        <Link href="https://github.com/navaneethnivol/pastepad/graphs/contributors" className="text-[var(--sub-color)] hover:text-[var(--sub-alt-color)] underline">Contributors</Link> on GitHub that have helped with implementing various features, adding themes and more
                     </div>
                 </div>
             </div>
 
             <div className="my-4">
-                <div className="text-2xl heading">
+                <div className="text-2xl text-[var(--sub-color)]">
                     contributors
                 </div>
                 <div className="grid grid-cols-4 gap-3 my-2">
-                    {contributions.map(contributor => <ContributorCard key={contributor.id} contributor={contributor}></ContributorCard>)}
+                    {contributions.filter(contributor => contributor.id != 33155848).map(contributor => <ContributorCard key={contributor.id} contributor={contributor}></ContributorCard>)}
                 </div>
             </div>
 
