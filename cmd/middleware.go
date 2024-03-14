@@ -6,7 +6,7 @@ import (
 
 func corsHandler(next http.Handler) http.Handler {
 
-	allowedOrigins := []string{"http://localhost:3000", "https://pastepad.vercel.app"}
+	allowedOrigins := []string{"http://localhost:3000", "https://pastepad.vercel.app", "https://pastepad.link"}
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
