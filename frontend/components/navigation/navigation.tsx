@@ -35,7 +35,7 @@ export default function Header() {
 
                     <Link href="/info">
                         <div className='mx-2 p-2'>
-                            <FontAwesomeIcon icon={faInfo} className='nav-button'></FontAwesomeIcon>
+                            <FontAwesomeIcon icon={faInfo} className='text-[var(--sub-color)] hover:text-[var(--text-color)]'></FontAwesomeIcon>
                         </div>
                     </Link>
                     <button onClick={()=>{

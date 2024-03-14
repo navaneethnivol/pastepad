@@ -18,14 +18,6 @@ header #logo .text .top {
   transition: color .125s, opacity .125s;
 }
 
-.nav-button {
-  color: var(--sub-color);
-}
-
-.nav-button :hover {
-  color: var(--text-color);
-}
-
 header #logo .icon {
   align-items: center;
   background-color: transparent;
