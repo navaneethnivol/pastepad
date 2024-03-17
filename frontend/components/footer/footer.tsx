@@ -1,7 +1,7 @@
 "use client"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faDonate, faCode, faPalette, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faDonate, faCode, faPalette, faCodeBranch, faFileContract } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'sonner';
 
 
@@ -22,6 +22,10 @@ export default function Footer() {
                     <a href="https://github.com/navaneethnivol/pastepad" className="flex flex-row items-center hover:text-[var(--main-color)]">
                         <FontAwesomeIcon className="mr-2" icon={faCode}></FontAwesomeIcon>
                         Github
+                    </a>
+                    <a href="/terms-of-service" className="flex flex-row items-center hover:text-[var(--main-color)]">
+                        <FontAwesomeIcon className="mr-2" icon={faFileContract}></FontAwesomeIcon>
+                        Terms
                     </a>
                 </div>
 
