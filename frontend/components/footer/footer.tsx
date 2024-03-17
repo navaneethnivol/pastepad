@@ -1,7 +1,7 @@
 "use client"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faDonate, faCode, faPalette, faCodeBranch, faFileContract } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faDonate, faCode, faPalette, faCodeBranch, faFileContract, faShieldAlt, faLock } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'sonner';
 
 
@@ -27,6 +27,18 @@ export default function Footer() {
                         <FontAwesomeIcon className="mr-2" icon={faFileContract}></FontAwesomeIcon>
                         Terms
                     </a>
+                    <a href="/terms-of-service" className="flex flex-row items-center hover:text-[var(--main-color)]">
+                        <FontAwesomeIcon className="mr-2" icon={faShieldAlt}></FontAwesomeIcon>
+                        Security
+                    </a>
+                    {/* <a href="/terms-of-service" className="flex flex-row items-center hover:text-[var(--main-color)]">
+                        <FontAwesomeIcon className="mr-2" icon={faLock}></FontAwesomeIcon>
+                        Privacy
+                    </a> */}
+                    {/* <a href="/terms-of-service" className="flex flex-row items-center hover:text-[var(--main-color)]">
+                        <FontAwesomeIcon className="mr-2" icon={}></FontAwesomeIcon>
+                        Siri Shortcut
+                    </a> */}
                 </div>
 
                 <div className="flex flex-col items-start sm:flex-row">
